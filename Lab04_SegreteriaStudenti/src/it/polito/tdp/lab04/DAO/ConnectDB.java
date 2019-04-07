@@ -6,22 +6,23 @@ import java.sql.SQLException;
 
 public class ConnectDB {
 
-	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root";
-	static private Connection connection = null;
+	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root&password=root";
+	static private Connection connection;
 
 	public static Connection getConnection() {
 
 		try {
-			if (connection == null) {
+			
 				connection = DriverManager.getConnection(jdbcUrl);
-			}
-			return connection;
+		
+			
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 			throw new RuntimeException("Cannot get a connection " + jdbcUrl, e);
 		}
+		return connection;
 	}
 
 }
